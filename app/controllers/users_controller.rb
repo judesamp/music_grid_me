@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   def dashboard
     @graph = Koala::Facebook::API.new(current_user.facebook_token)
     @music_likes = @graph.get_object("me/music", {}, api_version: "v2.0")
+    x = Echowrap.taste_profile_create(:name => 'My new playlist3', :type => 'song')
+    puts x.id
   end
 
   private
