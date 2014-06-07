@@ -1,13 +1,20 @@
-- @music_likes.each do |ml|
-  = ml["id"]
-  = ml["name"]
-  %button.btn.btn-default.btn-lg
-    %span.glyphicon.glyphicon-thumbs-up
-  %button.btn.btn-default.btn-lg
-    %span.glyphicon.glyphicon-thumbs-down
-  %br
+/ - @music_likes.each do |ml|
+/   = ml["id"]
+/   = ml["name"]
+/   %button.btn.btn-default.btn-lg
+/     %span.glyphicon.glyphicon-thumbs-up
+/   %button.btn.btn-default.btn-lg
+/     %span.glyphicon.glyphicon-thumbs-down
+/   %br
 
 /   <button type="button" class="btn btn-default btn-lg">
 /   <span class="glyphicon glyphicon-star"></span> Star
 / </button>
+%h3
+  Create or Click a Taste Profile to Get Started
+= render "taste_profiles/form"
+
+- @taste_profiles.each do |profile|
+  = link_to profile.name, taste_profile_path(profile)
+  %br
 

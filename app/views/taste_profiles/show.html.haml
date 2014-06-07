@@ -1,0 +1,6 @@
+%h1
+  Your current taste profile:
+  = @taste_profile.name
+  %br
+  - @similar_artists.each do |artist|
+    = artist.name

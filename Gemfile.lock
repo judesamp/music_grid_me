@@ -29,6 +29,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.7)
     bldr (1.0.1)
       multi_json
     bootstrap-sass (3.1.1.1)
@@ -159,6 +160,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bldr
   bootstrap-sass
   coffee-rails (~> 4.0.0)

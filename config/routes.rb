@@ -3,6 +3,25 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :users
+  resources :taste_profiles
+
+  namespace :api do
+    namespace :v1 do
+      resources :users do
+        collection do
+          post "login" => "users#session_create"
+          post "logout" => "users#session_destroy"
+          post "check_token" => "users#check_token"
+          post "create" => "users#create"
+        end
+
+      end
+      resources :taste_profiles
+
+      
+
+    end
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
