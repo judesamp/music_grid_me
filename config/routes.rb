@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  resources :users
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  get "dashboard" => "users#dashboard"
   get "/auth/:provider/callback" => "sessions#omniauth_create"
   get "/signout" => "sessions#omniauth_destroy", :as => :signout
   # Example resource route with sub-resources:

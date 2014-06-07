@@ -44,6 +44,7 @@ GEM
     execjs (2.2.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    gritter (1.1.0)
     haml (4.0.5)
       tilt
     hashie (2.0.5)
@@ -149,6 +150,7 @@ DEPENDENCIES
   bldr
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  gritter (= 1.1.0)
   haml
   jquery-rails
   omniauth

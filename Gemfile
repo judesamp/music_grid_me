@@ -10,6 +10,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bldr'
+gem "gritter", "1.1.0"
 gem 'bootstrap-sass'
 gem 'omniauth'
 gem 'omniauth-twitter'
