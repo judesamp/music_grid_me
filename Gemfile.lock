@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bldr (1.0.1)
       multi_json
@@ -56,6 +57,10 @@ GEM
     json (1.8.1)
     jwt (0.1.10)
       multi_json (>= 1.5)
+    koala (1.10.0rc2)
+      addressable
+      faraday
+      multi_json
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -153,6 +158,7 @@ DEPENDENCIES
   gritter (= 1.1.0)
   haml
   jquery-rails
+  koala (~> 1.10.0rc)
   omniauth
   omniauth-facebook
   omniauth-twitter

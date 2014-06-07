@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @graph = Koala::Facebook::API.new(current_user.facebook_token)
+    @music_likes = @graph.get_object("me/music", {}, api_version: "v2.0")
   end
 
   private

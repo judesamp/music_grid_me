@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem "koala", "~> 1.10.0rc"
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 
