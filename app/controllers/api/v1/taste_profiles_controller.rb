@@ -8,7 +8,7 @@
         end
 
         def create_profile(user)
-          name = "{SecureRandom.hex(10)}"
+          name = "#{SecureRandom.hex(10)}"
           last_user = User.last
           @taste_profile = TasteProfile.new(name: name, user_id: last_user.id)
           puts @taste_profile.inspect
