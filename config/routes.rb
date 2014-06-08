@@ -14,12 +14,14 @@ Rails.application.routes.draw do
           post "check_token" => "users#check_token"
           post "create" => "users#create"
         end
-
       end
-      resources :taste_profiles
-
-      
-
+      post "get_albums" => "taste_profiles#get_albums"
+      resources :taste_profiles do
+        collection do
+          post "get_three_suggestions" => "taste_profiles#get_three_suggestions"
+          
+        end
+      end
     end
   end
   # You can have the root of your site routed with "root"
