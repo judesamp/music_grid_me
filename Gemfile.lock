@@ -55,6 +55,7 @@ GEM
       tilt
     hashie (2.1.1)
     hike (1.2.3)
+    hpricot (0.8.6)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -64,7 +65,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
-    koala (1.10.0rc2)
+    koala (1.9.0)
       addressable
       faraday
       multi_json
@@ -127,6 +128,11 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rockstar (0.8.0)
+      activesupport (>= 1.4.2)
+      hpricot (>= 0.4.86)
+      i18n (>= 0.5.0)
+      rake (>= 0.10.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -174,14 +180,14 @@ DEPENDENCIES
   haml
   httparty
   jquery-rails
-  koala (~> 1.10.0rc)
-  multi_json
+  koala
   omniauth
   omniauth-facebook
   omniauth-twitter
   pg
   rails (= 4.1.0)
   rails_12factor
+  rockstar
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

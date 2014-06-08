@@ -8,6 +8,7 @@ module Api
           token = create_token
           @user.user_token = token
           @user.save
+          
           render json: @user
         else
           render plain: '0'

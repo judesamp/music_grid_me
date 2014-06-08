@@ -17,7 +17,6 @@ class TasteProfilesController < ApplicationController
     taste_profile_data = Echowrap.taste_profile_read(:id => @taste_profile.echonest_id)
     artist = taste_profile_data.items.sample
     @similar_artists = Echowrap.artist_similar(:id => artist.artist_id, :results => 3)
-    puts @similar_artists.inspect
   end
 
   def get_similar

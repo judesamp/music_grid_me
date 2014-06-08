@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :taste_profiles
 
+  get "rdio_test" => "welcome#rdio_test"
+
   namespace :api do
     namespace :v1 do
       resources :users do
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
       resources :taste_profiles do
         collection do
           post "get_three_suggestions" => "taste_profiles#get_three_suggestions"
+          post "get_albums" => "taste_profiles#get_albums"
           
         end
       end

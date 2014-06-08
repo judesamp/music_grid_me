@@ -3,4 +3,5 @@
   = @taste_profile.name
   %br
   - @similar_artists.each do |artist|
-    = artist.name
+    = link_to artist.name, rdio_test_path(:artist_name => artist.name)
+    = artist.inspect

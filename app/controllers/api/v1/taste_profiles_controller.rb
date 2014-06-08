@@ -12,12 +12,21 @@
         end
 
         def get_three_suggestions
-          x = Echowrap.artist_similar(:name => 'daft punk', :name => "u2")
+          incoming1 = params[:artists][:artist_1]
+          puts incoming1
+          incoming2 = params[:artists][:artist_2]
+          puts incoming2
+          incoming3 = params[:artists][:artist_3]
+          puts incoming3
+          offset = params[:artists][:offset].to_i
           user = User.find_by_user_token(params[:user_token])
-          create_profile(user) #unless user.taste_profiles.length > 0
+          create_profile(user) unless user.taste_profiles.length > 0
           create_echo_nest_taste_profile(user)
-          x = Echowrap.artist_similar(:name => 'daft punk', :name => "u2")
-          render json: x
+          similar_artist = Echowrap.artist_similar(:name => incoming1, :name => incoming2, :name => incoming3, :results => 1, :start => offset)
+          artist_name = similar_artist[0].name
+          scrubbed_artist_name = artist_name.downcase.gsub(' ', '+')
+          album = get_album(scrubbed_artist_name)
+          render json: album
         end
 
         def ban_something #pseudocode
@@ -33,7 +42,6 @@
         def rate
           user = User.find_by_user_token(params[:user_token])
           x = Echowrap.taste_profile_profile(:id => user.taste_profiles.last.echonest_id)
-          puts x.inspect
           Echowrap.taste_profile_rate(:id => user.taste_profiles.last.echonest_id, :item => params[:item_id], :rating => params[:rating])
           render plain: "1"
         end
@@ -41,12 +49,10 @@
         def get_favorites
         end
 
-        def get_albums
-          artist = params[:artist]
+        def get_album(artist_name)
           api_key = Rails.application.secrets.last_fm_key
-          response = HTTParty.post("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=#{artist}&api_key=#{api_key}&limit=3&format=json")
-          puts response
-          render plain: '1' 
+          url_string = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=#{artist_name}&api_key=9c6a019a0aeb9c3dd7d95d53a1e9ca11&format=json&limit=1"
+          HTTParty.get(url_string)
         end
 
         private
