@@ -13,6 +13,7 @@
         end
 
         def get_three_suggestions
+          puts params.inspect
           incoming1 = params[:artists][:artist_1]
           puts incoming1
           incoming2 = params[:artists][:artist_2]
@@ -20,15 +21,16 @@
           incoming3 = params[:artists][:artist_3]
           puts incoming3
           offset = params[:artists][:offset].to_i
-          user = User.find_by_user_token(params[:user_token])
+          #user = User.find_by_user_token(params[:user_token])
+          user = User.last
           puts user.inspect
           create_profile(user)
           create_echo_nest_taste_profile(user)
           similar_artist = Echowrap.artist_similar(:name => incoming1, :name => incoming2, :name => incoming3, :results => 1, :start => offset)
           artist_name = similar_artist[0].name
           scrubbed_artist_name = artist_name.downcase.gsub(' ', '+')
-          album = get_album(scrubbed_artist_name)
-          render json: album
+          albums = get_album(scrubbed_artist_name)
+          render json: albums
         end
 
         def ban_something #pseudocode
@@ -53,7 +55,7 @@
 
         def get_album(artist_name)
           api_key = Rails.application.secrets.last_fm_key
-          url_string = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=#{artist_name}&api_key=9c6a019a0aeb9c3dd7d95d53a1e9ca11&format=json&limit=1"
+          url_string = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=#{artist_name}&api_key=9c6a019a0aeb9c3dd7d95d53a1e9ca11&format=json&limit=3"
           HTTParty.get(url_string)
         end
 
