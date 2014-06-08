@@ -65,7 +65,7 @@
 
         def create_echo_nest_taste_profile(user)
           @taste_profile = user.taste_profiles.last
-          response = Echowrap.taste_profile_create(:name => "#{user.name}#{SecureRandom.hex(10)}", :type => 'artist')
+          #response = Echowrap.taste_profile_create(:name => "#{user.name}#{SecureRandom.hex(10)}", :type => 'artist')
           puts response
           @taste_profile.echonest_id = response.id
           @taste_profile.save!
