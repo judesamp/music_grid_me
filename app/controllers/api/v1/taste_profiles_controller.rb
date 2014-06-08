@@ -44,7 +44,8 @@
         end
 
         def rate
-          user = User.find_by_user_token(params[:user_token])
+          #user = User.find_by_user_token(params[:user_token])
+          user = User.last
           x = Echowrap.taste_profile_profile(:id => user.taste_profiles.last.echonest_id)
           Echowrap.taste_profile_rate(:id => user.taste_profiles.last.echonest_id, :item => params[:item_id], :rating => params[:rating])
           render plain: "1"
