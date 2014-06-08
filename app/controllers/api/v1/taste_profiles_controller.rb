@@ -11,7 +11,7 @@
           name = "#{SecureRandom.hex(10)}"
           last_user = User.last
           @taste_profile = TasteProfile.new(name: name, user_id: last_user.id)
-          @tast_profile.save
+          @taste_profile.save
           puts @taste_profile.inspect
           @taste_profile
         end
