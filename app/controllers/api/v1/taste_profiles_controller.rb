@@ -8,7 +8,7 @@
         end
 
         def create_profile(user)
-          name = "#{user.name}#{SecureRandom.hex(10)}"
+          name = "{SecureRandom.hex(10)}"
           @taste_profile = TasteProfile.new(name: name, user_id: user.id)
         end
 
@@ -21,6 +21,7 @@
           puts incoming3
           offset = params[:artists][:offset].to_i
           user = User.find_by_user_token(params[:user_token])
+          puts user.inspect
           create_profile(user)
           create_echo_nest_taste_profile(user)
           similar_artist = Echowrap.artist_similar(:name => incoming1, :name => incoming2, :name => incoming3, :results => 1, :start => offset)
