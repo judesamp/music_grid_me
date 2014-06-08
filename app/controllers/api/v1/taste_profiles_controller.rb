@@ -8,7 +8,8 @@
         end
 
         def create_profile(user)
-          @taste_profile = TasteProfile.new(name: 'hoasdfasdf', user_id: user.id)
+          name = "#{user.name}#{SecureRandom.hex(10)}"
+          @taste_profile = TasteProfile.new(name: name, user_id: user.id)
         end
 
         def get_three_suggestions
@@ -20,7 +21,7 @@
           puts incoming3
           offset = params[:artists][:offset].to_i
           user = User.find_by_user_token(params[:user_token])
-          create_profile(user) unless user.taste_profiles.length > 0
+          create_profile(user)
           create_echo_nest_taste_profile(user)
           similar_artist = Echowrap.artist_similar(:name => incoming1, :name => incoming2, :name => incoming3, :results => 1, :start => offset)
           artist_name = similar_artist[0].name
